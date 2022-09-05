@@ -34,7 +34,7 @@ jobs:
             docker push haynesx17/celery_app:$CIRCLE_TAG
       - run:
           name: SSH in to DigitalOcean Server & Run Containers via Deploy.sh Script
-          command: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER@$DROPLET_IP "bash celery_app.sh $CIRCLE_TAG"
+          command: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER@$DROPLET_IP "bash deploy-celery_app.sh $CIRCLE_TAG"
 
 
 workflows:
