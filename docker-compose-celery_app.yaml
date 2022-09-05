@@ -1,0 +1,23 @@
+version: '3'
+
+
+services:
+  celery_app:
+    image: haynesx17/celery_app:${TAG}
+    container_name: celery_app
+    command: >
+      sh -c "
+      celery -A celery_app worker --loglevel=INFO --concurrency=1"
+    ports:
+      - 8016:8016
+    expose:
+      - 8016
+    env_file:
+      - ../env/celery_app.env
+    volumes:
+      - ../celery_app-data:/home/celery_app/googleEnv/
+networks:
+    default:
+        external:
+            name: binance_bot_creator_network
+
